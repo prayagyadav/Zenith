@@ -7,18 +7,23 @@
     "title": "About",
     "type": "page"
   },
-  "research": {
-    "title": "Research",
-    "type": "page"
-  },
-  "people": {
-    "title": "People",
+  "team": {
+    "title": "Team",
     "type": "page"
   },
   "docs":{
-    "title":"Docs",
+    "title":"Explore",
     "type":"page"
 },
+  "news": {
+    "title":"Updates",
+    "display":"hidden",
+    "type":"page"
+  },
+  "updates":{
+    "title":"Updates",
+    "type":"page"
+  },
   "contact": {
     "title": "Contact",
     "type": "page"

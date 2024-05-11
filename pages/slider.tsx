@@ -4,18 +4,18 @@ import useEmblaCarousel from "embla-carousel-react";
 export const sliderData = [
     {
       id: 3,
-      title: "Visualization of a CMS event",
-      url: "/img/carousel/CMS_event.jpg",
+      title: "Inauguration day",
+      url: "/img/carousel/dean_vc.JPG",
     },
     {
       id: 2,
-      title: "LHC tunnel",
-      url: "/img/carousel/tunnel.webp",
+      title: "Inauguration day",
+      url: "/img/carousel/inauguration.JPG",
     },
     {
       id: 1,
-      title: "The Compact Muon Solenoid (CMS)",
-      url: "/img/carousel/cms.jpg",
+      title: "Inauguration day",
+      url: "/img/carousel/fullshot.JPG",
     }
   ];
 
@@ -25,7 +25,7 @@ export default function Slider() {
   return (
     <>
     <div
-      className="overflow-hidden m-2 bg-gray-200 w-full mx-auto flex items-center justify-center h-auto rounded"
+      className="overflow-hidden m-4 bg-gray-200 w-full mx-auto flex items-center justify-center h-auto rounded"
       ref={emblaRef}>
       <div className="flex">
         {sliderData?.map((item) => {

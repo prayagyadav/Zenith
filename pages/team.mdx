@@ -1,0 +1,60 @@
+import styles from './components/custom.module.css'
+import Link from 'next/link'
+import Image from 'next/image'
+
+# The Team
+
+export function Card(props) {
+  const emailprefix="mailto:"
+  const name=props.name
+  const description=props.description
+  const pagelink=props.pagelink
+  const pagetext=props.pagetext
+  const address=props.address
+  const email=props.email
+  return <>
+        <div className="flex mb-4 w-full border-2 m-2 rounded-xl">
+          <div className="p-4">
+            <p><b>{name}</b></p>
+            <Link href={emailprefix.concat(email)}><p className="text-blue-700 hover:text-blue-400">Email</p></Link>
+            <a href={pagelink} className='text-blue-700 hover:text-blue-400'>{pagetext}</a>
+            <p>{description}</p>
+            <i className='text-sm'>{address}</i>
+          </div>
+        </div>
+        </>
+}
+
+## Faculty coordinators
+
+<Card 
+name="Dr. Askoka Vudyagiri"
+email="ashok_vs@uohyd.ac.in"
+address="School of Physics, UoH"
+description="Faculty coordinator"
+/>
+
+## Student coordinators
+<div className='flex flex-col md:flex-row'>
+<Card 
+name="Dilip Kumar"
+email="21phph03@uohyd.ac.in"
+address="School of Physics, UoH"
+description="Contact me for booking a telescope session"
+/>
+<Card 
+name="Prayag Yadav"
+email="19ipmp03@uohyd.ac.in"
+address="102, CASEST, UoH"
+pagelink="https://www.prayagyadav.me"
+pagetext="Website"
+description="Contact me for website related queries"
+/>
+<Card 
+name="Akshat Singh"
+pfplink="/img/default_avatar.png"
+email="22phmp07@uohyd.ac.in"
+address="School of Physics, UoH"
+description=""
+/>
+</div>

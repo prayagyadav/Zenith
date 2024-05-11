@@ -1,6 +1,6 @@
 {
-    "physics":"Physics",
-    "hardware":"Hardware",
-    "others":"Others"
+  "earth":"The Earth",
+  "moon":"The Moon",
+  "solarsystem":"The Solar System"
   }
   
