@@ -11,10 +11,10 @@ const config: DocsThemeConfig = {
   },
   head:(
     <>
-      <link rel="shortcut icon" href="/img/cmslablogo.jpeg" />
-      <meta property="og:title" content="CMSLAB" />
+      <link rel="shortcut icon" href="/img/zenith_logo_minimal.png" />
+      <meta property="og:title" content="ZENITH Astronomy Club" />
       <meta property="og:description" content="The homepage of Zenith Astronomy Club" />
-      <meta property="og:image" content="/img/cmslablogo.jpeg" />
+      <meta property="og:image" content="/img/zenith_logo.jpeg" />
     </>
   ),
   logo: (

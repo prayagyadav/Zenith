@@ -1,2 +1,19 @@
+import fs from "fs"
+import path from "path"
+
 # News and Updates
 
+export async function getStaticProps() {
+  // get files from ./news
+//   const files = fs.readdirSync(path.join("./news"));
+  const files = fs.readdirSync(path.join("pages/news"));
+
+  console.log(files)
+
+  // get info from files
+  const posts = files.map();
+
+  return {
+    props: { post },
+  };
+}
