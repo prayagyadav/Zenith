@@ -1,0 +1,128 @@
+# cmslab-workstation
+> The private server of cmslab.
+
+## General Specifications
+
+| Property | Description |
+| ------------------------------------- | --------------------------------------------- |
+| **Server Name:**                      | CMSLab Workstation (cmslab-workstation)       |
+| **Operating System:**                 | GNU/Linux                                     |
+| **Operating system distribution:**    | AlmaLinux 9.3 (Shamrock Pampas Cat) x86_64    |
+| **CPU:**                              | 2 x Intel Xeon Silver 4314 (64) @ 3.400GHz    |
+| **GPU:**                              | NVIDIA Quadro T400 Mobile                     |
+| **RAM:**                              | 128 GB                                        |
+| **Total installed storage:**          | 6.98 TB                                       |
+
+see detailed specifications [here](./cmslab-workstation/specifications.mdx)
+
+## Workflows installed
+
+### JupyterHub
+JupyterHub is installed as a docker image.
+It is modified it to match the lab's cases. The name of the image is `fixedjpyhub:ver2` . Use this command to list all the docker images installed:
+```bash
+docker images
+```
+To start the JupyterHub service run:
+```bash
+docker run -p 8000:8000 -d --name CMSLABjupyterhub fixedjpyhub:ver2 jupyterhub
+```
+Access the JupyterHub server by going to http://10.4.48.61:8000 on your browser.(or whatever the current IP address is) \ 
+To add new users first get into the container bash shell:
+```bash
+docker exec -it CMSLABjupyterhub bash
+```
+The container is has debian as the linux layer. So, add a new user by :
+```bash
+adduser <your username>
+```
+
+### Machine Learning with GPU
+
+A singularity container with tensorflow and jupyter is installed which utilises the Nvidia GPU installed in the server. 
+
+To start a jupyter notebook session with tensorflow and GPU : 
+
+1. Forward the jupyter notebook port 8888 via ssh.
+```bash
+ssh -L 8888:localhost:8888 <username>@10.4.48.61 
+```
+
+2. Start the singularity container with `-nv` flag to allow the usage of Nvidia GPU :
+
+```bash
+singularity run --nv /commonfs/singularity_images/ML/tensorflow_latest-gpu-jupyter.sif
+```
+
+3. Ctrl+Click on the `http://127.0.0.1:8888 … `link which shows up on the terminal.
+
+### Jupyter-Lab
+
+Natively, the jupyter-lab installed on bare metal of the server has no additional packages installed. Although you could use pyROOT. Additional packages could be installed for a user by adding the -user flag during pip installations.
+
+To start a jupyter-lab server, first login to the server with an appropriate port forward. For this example lets forward the port 8934 :
+```bash
+ssh -L 8934:localhost:8934 <username>@10.4.48.61
+```
+Once that is done, lets start a jupyter-lab server at port 8934 :
+```bash
+jupyter-lab --no-browser --port 8943 --ip=localhost
+```
+Upon running this, you should see two links on the terminal. Ctrl+Click on the link that starts with `https://127 ... `
+
+This will open your browser and lead you to the jupyter-lab console. Here you could use pyROOT by
+```python
+import ROOT
+```
+Expected output is a welcome message from JupyROOT.
+
+## Other information
+
+### Life hacks
+
+1. **LAN failure** \
+    In the case when university LAN internet certification expires you can still login through the network, follow these steps:
+    1. Login as usual with ssh but with X-forwarding enabled:
+    ```bash
+    ssh -X <username>@10.4.48.61
+    ```
+    2. Open a lightweight browser and login to the university network. A lightweight browser called seamonkey is already installed and it is recommended to use that:
+    To start the browser:
+    ```bash
+    seamonkey
+    ```
+    3. The university login url is [http://192.168.56.2:8090/httpclient.html](http://192.168.56.2:8090/httpclient.html) which is also bookmarked in seamonkey.
+    Once logged in, you could close the browser window.
+
+2. In the case when the university LAN has no power
+    We have setup an internal switch network with the 'Bhawna 2' wifi router.
+    In case of a university LAN failure,
+    1. Connect to Wifi on your device and connect to 'Bhawna 2' (Password: CMSLAB2@).
+    2. Go on to the settings of the network 'Bhawna 2'
+    3. Change the ipv4 and ipv6 settings to 'Link Local' and apply the changes.(One-time process)
+    4. Disconnect and reconnect to 'Bhawna 2'
+    5. Open a terminal and ssh connect to the server with your username and ip address: 169.254.137.50 (this is the hardware ip4). \
+    For example :
+    ```bash
+    ssh prayag@169.254.137.50
+    ```
+
+    ### Known issues
+
+1. IP address assignment \
+— _[prayag](mailto:prayagyadav206@gmail.com) 2024/02/05 06:48_ \
+It seems like the IP address assignment by university network has a problem.
+I have setup the NetworkManager configuration to assign 10.4.48.61 to the device id eth0 .
+This assigns the ip 10.4.48.61 to the server on startup. But this work almost 50% of the times only. 
+Sometimes, the IP address 10.4.49.35 is assigned on startup.
+For now, this could be fixed by repeatedly rebooting the server till 10.4.48.61 is assigned.
+
+2. Logging in to university wifi \
+— _[prayag](mailto:prayagyadav206@gmail.com) 2024/02/11 11:24_ \
+Once you connect to either University LAN or wifi you have to login from a web-browser. 
+The problem with a server configuration is that you can't always have an access to the GUI, to open a browser and login from a browser.
+A possible solution to this is re-engineering the AJAX request from the login portal and run the request from a terminal. 
+I have tried this and have been unsuccessful so far. A workaround is to open a VNC session and login from there. 
+You can also “X forward” a firefox browser window through ssh but that is incredibly slow. 
+A lightweight browser like seamonkey will work a lot better. 
+Go to seamonkey and check out the bookmark where the university wifi login page is bookmarked.

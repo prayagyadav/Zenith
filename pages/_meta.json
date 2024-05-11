@@ -1,0 +1,26 @@
+{
+  "index": {
+    "title":"Home",
+    "type":"page"
+  },
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "research": {
+    "title": "Research",
+    "type": "page"
+  },
+  "people": {
+    "title": "People",
+    "type": "page"
+  },
+  "docs":{
+    "title":"Docs",
+    "type":"page"
+},
+  "contact": {
+    "title": "Contact",
+    "type": "page"
+  }
+}

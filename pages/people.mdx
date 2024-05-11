@@ -1,0 +1,107 @@
+import styles from './components/custom.module.css'
+import Link from 'next/link'
+import Image from 'next/image'
+
+# People
+
+## Faculty:
+
+export function Card(props) {
+  const emailprefix="mailto:"
+  const pagelink=props.page
+  const imglink=props.pfplink
+  const name=props.name
+  const description=props.description
+  const address=props.address
+  const email=props.email
+  return <>
+        <div className="flex mb-4 w-full">
+          <div className='p-4 w-1/2'>
+            <Link href={{pathname: pagelink}}>
+              <Image alt={name} src={imglink} width={1000} height={1000}/>
+            </Link>
+          </div>
+          <div className="p-4 w-1/2">
+            <p><b>{name}</b></p>
+            <Link href={emailprefix.concat(email)}><p className="text-red-700 hover:text-red-400">Email</p></Link>
+            <Link href={{pathname: pagelink}}><p className="text-red-700 hover:text-red-400">Profile Page↗️</p></Link>
+            <p>{description}</p>
+            <i className='text-sm'>{address}</i>
+          </div>
+        </div>
+        </>
+}
+
+
+<Card 
+name="Dr. Bhawna Gomber"
+pfplink="/img/bhawna_square_cropped.jpg"
+email="bhawna.gomber@cern.ch"
+page="/people/bhawna"
+address="104, CASEST, UoH"
+description="Group Leader"
+/>
+
+## PhD students:
+
+
+<Card 
+name="Bisnupriya Sahu"
+pfplink="/img/default_avatar.png"
+email="bisnupriya.sahu@cern.ch"
+address="102, CASEST, UoH"
+description=""
+/>
+<Card 
+name="Shriniketan Aacharya"
+pfplink="/img/default_avatar.png"
+email="shriniketanacharya@uohyd.ac.in"
+address="102, CASEST, UoH"
+description=""
+/>
+<Card 
+name="Piyush Kumar"
+pfplink="/img/default_avatar.png"
+email="17pimpt02@uohyd.ac.in"
+address="102, CASEST, UoH"
+description=""
+/>
+<Card 
+name="Himanshu maurya"
+pfplink="/img/default_avatar.png"
+email="23phph04@uohyd.ac.in"
+address="102, CASEST, UoH"
+description=""
+/>
+
+## Project Students:
+
+<Card 
+name="Prayag Yadav"
+pfplink="/img/prayag.jpg"
+email="19ipmp03@uohyd.ac.in"
+page="https://www.prayagyadav.me"
+description=""
+/>
+
+<Card 
+name="Lakshmi Praharsha"
+pfplink="/img/default_avatar.png"
+email="19ipmp27@uohyd.ac.in"
+description=""
+/>
+
+<Card 
+name="Ananya Prakash"
+pfplink="/img/default_avatar.png"
+email="20ipmp29@uohyd.ac.in"
+description=""
+/>
+
+
+## Past Students: 
+  * Sambit Sathapathy
+  * Vignesh
+  * Arnab
+  * Shubham Gupta
+  * Anshuman Das

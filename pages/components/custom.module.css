@@ -1,0 +1,39 @@
+
+.container {
+  padding: 2px 16px;
+}
+.redcolor {
+  color: #B91C1C; 
+}
+
+.tailwindcard{
+  padding: 1.5rem; 
+  border-radius: 0.5rem; 
+  border-width: 1px; 
+  border-color: #E5E7EB; 
+  max-width: 24rem; 
+  background-color: #ffffff; 
+}
+
+.card {
+  display: block; 
+  padding: 1.5rem; 
+  border-radius: 0.5rem; 
+  border-width: 1px; 
+  border-color: #E5E7EB; 
+  max-width: 24rem; 
+  background-color: #ffffff; 
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
+}
+
+.card:hover {
+ background-color: #F3F4F6; 
+ }
+
+ .grid{
+  display: grid  ;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); 
+  gap: 1rem; 
+ }
+
+ /* #282829 */
