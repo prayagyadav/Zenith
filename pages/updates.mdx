@@ -1,19 +1,45 @@
-import fs from "fs"
-import path from "path"
+import { type } from 'os';
+import useSWR from 'swr';
 
-# News and Updates
 
-export async function getStaticProps() {
-  // get files from ./news
-//   const files = fs.readdirSync(path.join("./news"));
-  const files = fs.readdirSync(path.join("pages/news"));
 
-  console.log(files)
+export function Card(props){
+    const metastring = props.metastring
+    const types = metastring.split(/\r?\n/)
 
-  // get info from files
-  const posts = files.map();
-
-  return {
-    props: { post },
-  };
+    console.log(types)
+    return (
+        <>
+            <div className='transition-all duration-300 hover:scale-105 border-2 rounded m-2 p-2 h-auto'>
+                <p className='text-blue-500 text-2xl'>{types[1]}</p>
+                <p className='text-blue-500'>{types[2]}</p>
+            </div>
+        </>
+    )
 }
+export function getlink(metastring){
+    const types = metastring.split(/\r?\n/)
+    const fulllink = types[0]
+    return fulllink.replace(/\.[^/.]+$/, '')
+}
+
+
+export function ListofFiles() {
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+//   const { data } = useSWR('/api/readfiles', fetcher);
+  const { data } = useSWR('/api/readmeta/readmeta', fetcher);
+
+
+  return (<>
+    <div>
+        {!data && "Loading..."}
+        {data && data.map(fileName => <a href={getlink(fileName)}><Card metastring={fileName} /></a>)
+        }
+    </div>
+    </>
+  )
+}
+
+# New and Updates
+
+<ListofFiles />
