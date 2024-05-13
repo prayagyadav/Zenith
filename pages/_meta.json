@@ -7,9 +7,9 @@
     "title": "About",
     "type": "page"
   },
-  "team": {
-    "title": "Team",
-    "type": "page"
+  "observatory":{
+    "title":"Observatory",
+    "type":"page"
   },
   "docs":{
     "title":"Explore",
@@ -23,6 +23,10 @@
   "updates":{
     "title":"Updates",
     "type":"page"
+  },
+  "team": {
+    "title": "Team",
+    "type": "page"
   },
   "contact": {
     "title": "Contact",
