@@ -4,7 +4,7 @@ export function Instagram(props){
         <>
             {/* <!-- Instagram --> */}
             <a href={props.link}>
-                <div className="flex flex-row items-center m-2 hover:bg-blue-900">
+                <div className="flex flex-row items-center m-2 hover:bg-blue-500">
                     <div className="p-2">
                         <p className="text-xl">Instagram</p> 
                     </div>
@@ -31,7 +31,7 @@ export function Email(props){
         <>
             {/* <!-- Email --> */}
             <a href={props.link}>
-                <div className="flex flex-row items-center m-2 hover:bg-blue-900">
+                <div className="flex flex-row items-center m-2 hover:bg-blue-500">
                     <div className="p-2">
                         <p className="text-xl">Email</p> 
                     </div>
