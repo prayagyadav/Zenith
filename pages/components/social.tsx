@@ -43,3 +43,7 @@ export function Email(props){
         </>
     )
 }
+
+export default function social(){
+    return 0;
+}
