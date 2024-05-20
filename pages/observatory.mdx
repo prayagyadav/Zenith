@@ -40,17 +40,42 @@ Her achievements apart, it was Rathnasree’s human qualities that endeared her 
 
 ## Camera
 
-<div className='grid grid-col-2'>
-    <div>
-    <img src="/img/equipment/ccd0.jpeg" />
-    </div>
-    <div>
-    <img src="/img/equipment/ccd1.jpeg" />
-    </div>
-    <div>
-    <img src="/img/equipment/ccd2.jpeg"/>
-    </div>
-    <div>
-    <img src="/img/equipment/autostar.jpeg" />
-    </div>
-</div>
+export function ImageFourGrid(props) {
+    return(
+        <>
+        <div>
+            <div className='flex flex-col md:flex-row'>
+                <a href={props.image1}>
+                    <div>
+                    <Image src={props.image1}  width={500} height={500} className='rounded-tl-lg'/>
+                    </div>
+                </a>
+                <a href={props.image2}>
+                    <div>
+                    <Image src={props.image2} width={500} height={500} className='rounded-tr-lg'/>
+                    </div>
+                </a>
+            </div>
+            <div className='flex flex-col md:flex-row'>
+                <a href={props.image3}>
+                    <div>
+                    <Image src={props.image3} width={500} height={500} className='rounded-bl-lg' />
+                    </div>
+                </a>
+                <a href={props.image4}>
+                    <div>
+                    <Image src={props.image4} width={500} height={500} className='rounded-br-lg' />
+                    </div>
+                </a>
+            </div>
+        </div>
+    </>
+    )
+}
+
+<ImageFourGrid 
+    image1= "/img/equipment/ccd0.jpeg" 
+    image2= "/img/equipment/ccd1.jpeg"
+    image3= "/img/equipment/ccd2.jpeg"
+    image4= "/img/equipment/autostar.jpeg"
+/>
