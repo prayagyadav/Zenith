@@ -1,49 +1,9 @@
 import Image from 'next/image'
 
-# Dr. Nandivada Ratnashree Observatory
-
-<br></br>
-<Image 
-    src={"/img/explain.JPG"}
-    alt="Dr. Nandivada Ratnashree Observatory"
-    width={1000}
-    height={1000}
-    className='rounded'
-/>
-
-## Dr. Nandivada Ratnashree
-
-<div className='flex flex-col md:flex-row items-center justify-center'>
-
-<p> Dr Nandivada Rathnasree was the self-effacing director of Delhi’s Nehru Planetarium who popularised astronomy among generations of school and college kids for more than two decades. Under Rathnasree’s stewardship, Nehru Planetarium became one of the city’s iconic institutions — a popular spot for children and young adults across north India and a go-to place for enthusiasts during astronomical events.</p>
-<Image
-    src="/img/drratnashree.png"
-    alt="Dr. Nandivada Ratnashree"
-    width={200}
-    height={200}
-    className='rounded-2xl w-1/2 h-auto m-4'
-/>
-</div>
-
-Rathnasree, who had a PhD on stellar evolution from Tata Institute of Fundamental Research and did post-doctoral research on pulsar astronomy at University of Vermount, US, was the director of the planetarium for 22 years since 1999. She was also a foremost expert on the Jantar Mantar complexes in Delhi, Jaipur and Varanasi. \
-“As mandated by Nehru Memorial Museum and Library, of which the planetarium is a part, Rathnasree attended office till April 18 or 19. She came down with a fever and cough on April 20. We consulted doctors on the phone and treated her at home because there was no bed in hospitals,” said Patrick Dasgupta, Rathnasree’s husband and a professor of physics and astrophysics at Delhi University.
-Dasgupta said her condition deteriorated on April 30. “Her oxygen level fell to 72. I frantically took her in an ambulance to six-seven hospitals through the night but could not get a bed. On May 1, we managed a bed at DRDO’s Sardar Vallabhbhai Patel Covid Centre. She was being given oxygen and her levels were being monitored. She was improving till May 8 evening, but her condition worsened suddenly in the early hours of May 9 and she left us,” said an emotional Dasgupta. It was mainly due to Rathnasree’s untiring efforts that that the planetarium became a people-centric institution, said Ajay Talwar, an astro-photographer and vice-president of Amateur Astronomers Association Delhi, who had known her since 1999.
-“She was always engaging with and encouraging students, trying to get them topics for research etc. And she was always overworked. Not because someone was piling work on her but because she was always taking up new projects all by herself,” Talwar said. \
-It was under Rathnasree’s leadership that the planetarium started conducting public watch programmes during astronomical events, which got massive response. She was closely involved with all new programmes developed for the public at the planetarium’s popular sky show for which a new digital projector was acquired some years ago. “She developed special programmes on Prof Yashpal just after he died and on Prof Govind Swaroop last year, as well as on scientists such as Meghnad Saha,” said Dasgupta.
-Her achievements apart, it was Rathnasree’s human qualities that endeared her to the staff, said Mahender Kumar Jain, who retired as the planetarium administrator in 2017. “She would also be at the side of the staff, sharing their joys and sorrows. That was her biggest quality,” Jain said.
-
---- Amit Bhattacharya for [Times of India](https://timesofindia.indiatimes.com/city/delhi/scientist-who-made-nehru-planetarium-a-city-icon-dies/articleshow/82561452.cms) on May 12, 2021.
-
-## The Telescope
-
-
-
-## Camera
-
 export function ImageFourGrid(props) {
     return(
         <>
-        <div>
+        <div className='m-4'>
             <div className='flex flex-col md:flex-row'>
                 <a href={props.image1}>
                     <div>
@@ -73,9 +33,80 @@ export function ImageFourGrid(props) {
     )
 }
 
+# Dr. Nandivada Ratnashree Observatory
+
+<br></br>
+<div className='flex items-center justify-center m-4'>
+<Image 
+    src={"/img/explain.JPG"}
+    alt="Dr. Nandivada Ratnashree Observatory"
+    width={1000}
+    height={1000}
+    className='rounded'
+/>
+</div>
+
+## Dr. Nandivada Ratnashree
+
+<div className='flex flex-col md:flex-row items-center justify-center m-4'>
+
+<div className='m-4'> Dr Nandivada Rathnasree was the self-effacing director of Delhi's Nehru Planetarium who popularised astronomy among generations of school and college kids for more than two decades. Under Rathnasree's stewardship, Nehru Planetarium became one of the city's iconic institutions — a popular spot for children and young adults across north India and a go-to place for enthusiasts during astronomical events.</div>
+<div className='flex items-center justify-center'>
+<Image
+    src="/img/drratnashree.png"
+    alt="Dr. Nandivada Ratnashree"
+    width={1000}
+    height={1000}
+    className='rounded-2xl m-4'
+/>
+</div>
+</div>
+
+Rathnasree, who had a PhD on stellar evolution from Tata Institute of Fundamental Research and did post-doctoral research on pulsar astronomy at University of Vermount, US, was the director of the planetarium for 22 years since 1999. She was also a foremost expert on the Jantar Mantar complexes in Delhi, Jaipur and Varanasi. \
+“As mandated by Nehru Memorial Museum and Library, of which the planetarium is a part, Rathnasree attended office till April 18 or 19. She came down with a fever and cough on April 20. We consulted doctors on the phone and treated her at home because there was no bed in hospitals,” said Patrick Dasgupta, Rathnasree's husband and a professor of physics and astrophysics at Delhi University.
+Dasgupta said her condition deteriorated on April 30. “Her oxygen level fell to 72. I frantically took her in an ambulance to six-seven hospitals through the night but could not get a bed. On May 1, we managed a bed at DRDO's Sardar Vallabhbhai Patel Covid Centre. She was being given oxygen and her levels were being monitored. 
+She was improving till May 8 evening, but her condition worsened suddenly in the early hours of May 9 and she left us,” said an emotional Dasgupta. It was mainly due to Rathnasree's untiring efforts that that the planetarium became a people-centric institution, said Ajay Talwar, an astro-photographer and vice-president of Amateur Astronomers Association Delhi, who had known her since 1999.
+“She was always engaging with and encouraging students, trying to get them topics for research etc. And she was always overworked. Not because someone was piling work on her but because she was always taking up new projects all by herself,” Talwar said. \
+It was under Rathnasree's leadership that the planetarium started conducting public watch programmes during astronomical events, which got massive response. She was closely involved with all new programmes developed for the public at the planetarium's popular sky show for which a new digital projector was acquired some years ago. 
+“She developed special programmes on Prof Yashpal just after he died and on Prof Govind Swaroop last year, as well as on scientists such as Meghnad Saha,” said Dasgupta.
+Her achievements apart, it was Rathnasree's human qualities that endeared her to the staff, said Mahender Kumar Jain, who retired as the planetarium administrator in 2017. “She would also be at the side of the staff, sharing their joys and sorrows. That was her biggest quality,” Jain said.
+
+--- Amit Bhattacharya for [Times of India](https://timesofindia.indiatimes.com/city/delhi/scientist-who-made-nehru-planetarium-a-city-icon-dies/articleshow/82561452.cms) on May 12, 2021.
+
+## Equipments
+
+The ZENITH Astronomy Club at the University of Hyderabad is driven by a profound curiosity to explore the vast cosmos and a deep understanding of our place within it. 
+At ZENITH, we are committed to fostering a sense of wonder and intellectual curiosity, encouraging our members to ponder the vastness of space and the intricacies of celestial phenomena. 
+To support our mission, the ZENITH Astronomy Club is equipped with a range of sophisticated instruments that allow us to explore the night sky in remarkable detail. 
+Below is an overview of the key instruments we possess:
+
+
+### 1. Meade LX200GPS Telescope
+The Meade LX200GPS is a versatile, high-resolution Schmidt-Cassegrain telescope that comes in various aperture sizes . These models are known for their advanced optical systems and precision control features.
+
+__Optical System:__ The LX200GPS series utilizes the Schmidt-Cassegrain design, where light enters through a thin lens (correcting plate), then reflects off a spherical primary mirror, and finally off a convex secondary mirror. This design provides a high focal length and a compact optical tube, making it ideal for visual observations and astrophotography.
+
+__Primary Mirror:__ These telescopes feature an oversized primary mirror that offers a fully illuminated field of view. This design ensures high-quality, contrast-rich images with reduced off-axis stray light, enhancing lunar, planetary, and deep-space observations.
+
+__Autostar II Hand Controller:__ The Autostar II system enables automatic alignment, tracking, and finding of celestial objects from a database of over 145,000 entries. It simplifies operations such as slewing of the telescope and tracking objects in the night sky.
+
+__Microfocuser:__ The LX200GPS includes a zero image-shift microfocuser that allows precise focusing adjustments without shifting the image, crucial for high-magnification views and astrophotography.
+
+Download the full user manual [here](/doc/LX200GPS_manual.pdf).
+
+### 2. ZWO ASI183 MC Pro Camera
+The ZWO ASI183 MC Pro is a dedicated astrophotography camera which is highly regarded for its advanced features tailored for deep-sky imaging.
+
+__Sensor:__ It uses a Sony IMX183 CMOS sensor with a resolution of 20.18 megapixels (5496x3672). The sensor size is 13.2mm x 8.8mm, providing a high level of detail.
+
+__Cooling System:__ This camera is equipped with a two-stage TEC (thermoelectric cooling) system that can lower the sensor temperature by up to 40°C below ambient, significantly reducing noise and allowing for long exposure times essential for capturing faint deep-sky objects.
+
+
 <ImageFourGrid 
     image1= "/img/equipment/ccd0.jpeg" 
     image2= "/img/equipment/ccd1.jpeg"
     image3= "/img/equipment/ccd2.jpeg"
     image4= "/img/equipment/autostar.jpeg"
 />
+
+Download the full user manual [here](/doc/ZWO_ASI_Cooled_Cameras_Quick_Guide.pdf).
