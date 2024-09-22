@@ -3,24 +3,44 @@ import useEmblaCarousel from "embla-carousel-react";
 
 export const sliderData = [
     {
-      id: 3,
-      title: "Inauguration day",
-      url: "/img/carousel/dean_vc.JPG",
+      id: 1,
+      title: "Foundation Day",
+      url: "/img/carousel/1_carousel_copy.jpeg",
     },
     {
       id: 2,
+      title: "Foundation Day",
+      url: "/img/carousel/2_carousel_copy.jpeg",
+    },
+    {
+      id: 3,
+      title: "Foundation Day",
+      url: "/img/carousel/3_carousel_copy.jpeg",
+    },
+    {
+      id: 4,
+      title: "Foundation Day",
+      url: "/img/carousel/4_carousel_copy.jpeg",
+    },
+    {
+      id: 5,
+      title: "Foundation Day",
+      url: "/img/carousel/5_carousel_copy.jpeg",
+    },
+    {
+      id: 6,
       title: "Inauguration day",
       url: "/img/carousel/inauguration.JPG",
     },
     {
-      id: 1,
+      id: 7,
       title: "Inauguration day",
-      url: "/img/carousel/fullshot.JPG",
+      url: "/img/carousel/dean_vc.JPG",
     }
   ];
 
 export default function Slider() {
-  const [emblaRef] = useEmblaCarousel({ loop: true}, [Autoplay({delay: 7000})]);
+  const [emblaRef] = useEmblaCarousel({ loop: true}, [Autoplay({delay: 5000})]);
 
   return (
     <>

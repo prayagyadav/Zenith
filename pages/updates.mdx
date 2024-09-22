@@ -1,6 +1,6 @@
 import { type } from 'os';
 import useSWR from 'swr';
-
+import Link from 'next/link'
 
 
 export function Card(props){
@@ -10,9 +10,12 @@ export function Card(props){
     console.log(types)
     return (
         <>
-            <div className='transition-all duration-300 hover:scale-105 rounded m-2 p-2 h-auto'>
-                <p className='text-blue-500 text-2xl'>{types[1]}</p>
-                <p className='text-blue-500'>{types[2]}</p>
+            <div className='rounded m-2 p-2 h-auto'>
+                <p className='group text-2xl relative w-max'>
+                  <span ><div className='no-underline'>{types[1].split(":")[1]}</div></span>
+                  <span className='absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-blue-500 group-hover:w-full'></span>
+                </p>
+                <p className='text-blue-500 mt-1 mb-1'>{types[2].split(":")[1]}</p>
             </div>
         </>
     )
@@ -33,7 +36,7 @@ export function ListofFiles() {
   return (<>
     <div>
         {!data && "Loading..."}
-        {data && data.map(fileName => <a href={getlink(fileName)}><Card metastring={fileName} /></a>)
+        {data && data.map(fileName => <Link href={getlink(fileName)}><Card metastring={fileName} /></Link>)
         }
     </div>
     </>

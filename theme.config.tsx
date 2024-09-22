@@ -11,10 +11,10 @@ const config: DocsThemeConfig = {
   },
   head:(
     <>
-      <link rel="shortcut icon" href="/img/zenith_logo_minimal.png" />
+      <link rel="shortcut icon" href="/img/New_Logo_minimal.jpeg" />
       <meta property="og:title" content="ZENITH Astronomy Club" />
       <meta property="og:description" content="The homepage of Zenith Astronomy Club" />
-      <meta property="og:image" content="/img/zenith_logo.jpeg" />
+      <meta property="og:image" content="/img/New_Logo.jpeg" />
     </>
   ),
   logo: (

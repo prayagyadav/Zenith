@@ -1,21 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Banner from './components/banner'
 import Slider from './components/slider'
 import {ListofFiles} from './updates.mdx'
 import {Instagram,Email} from './components/social'
 
-<h1 className='text-7xl font-extrabold flex items-center justify-center'>ZENITH</h1>
-<h4 className='text-xl font-extralight flex items-center justify-center'>Astronomy Club</h4>
-<h4 className='text-xl italic font-extralight flex items-center justify-center'>School of Physics | University of Hyderabad</h4>
-<br />
+
+<Banner />
+
 <Slider />
 
 <div className="flex flex-col md:flex-row justify-center items-center">
     <div className='items-center'>
-        <Image src="/img/zenith_logo.jpg" width={250} height={200} className='p-4 rounded-full'/>
+        <Image src="/img/New_Logo.jpeg" width={250} height={200} className="p-4 rounded-3xl"/>
     </div>
     <div >
-        <Image src="/img/uoh.jpg" width={200} height={200} className='p-4 rounded-full'/>
+        <Image src="/img/uoh.jpg" width={200} height={200} className="p-4 rounded-full"/>
     </div>
 </div>
 

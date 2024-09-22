@@ -9,5 +9,18 @@ const withNextra = require('nextra')({
     rehypePlugins: [rehypeKatex],
   },
 })
-
-module.exports = withNextra()
+module.exports = {
+  ...withNextra(),
+  images: {
+    domains:['res.cloudinary.com'],
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/my-account/**",
+      },
+    ],
+  },
+}
