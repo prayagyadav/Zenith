@@ -3,44 +3,61 @@ import useSWR from 'swr';
 import Link from 'next/link'
 
 
-export function Card(props){
-    const metastring = props.metastring
-    const types = metastring.split(/\r?\n/)
+export function Card(props) {
+    const metastring = props.metastring;
+    const types = metastring.split(/\r?\n/).filter(line => line.trim() !== "---"); // Remove `---` lines
 
-    console.log(types)
+    const title = types.find(line => line.startsWith("title:"))?.split(":")[1]?.trim() || "No Title";
+    const date = types.find(line => line.startsWith("date:"))?.split(":")[1]?.trim() || "Unknown Date";
+
     return (
-        <>
-            <div className='rounded m-2 p-2 h-auto'>
-                <p className='group text-2xl relative w-max'>
-                  <span ><div className='no-underline'>{types[1].split(":")[1]}</div></span>
-                  <span className='absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-blue-500 group-hover:w-full'></span>
-                </p>
-                <p className='text-blue-500 mt-1 mb-1'>{types[2].split(":")[1]}</p>
-            </div>
-        </>
-    )
-}
-export function getlink(metastring){
-    const types = metastring.split(/\r?\n/)
-    const fulllink = types[0]
-    return fulllink.replace(/\.[^/.]+$/, '')
+        <div className="rounded m-2 p-2 h-auto">
+            <p className="group text-2xl relative w-max">
+                <span>
+                    <div className="no-underline">{title}</div>
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-blue-500 group-hover:w-full"></span>
+            </p>
+            <p className="text-blue-500 mt-1 mb-1">{date}</p>
+        </div>
+    );
 }
 
+export function getlink(metastring) {
+    return metastring.split(/\r?\n/)[0].replace(/\.[^/.]+$/, '');
+}
+
+export function extractDate(metastring) {
+    const types = metastring.split(/\r?\n/).filter(line => line.trim() !== "---"); // Remove `---`
+    const dateStr = types.find(line => line.startsWith("date:"))?.split(":")[1]?.trim();
+
+    return dateStr ? new Date(dateStr) : new Date(0); // Use epoch if date is missing
+}
 
 export function ListofFiles() {
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-//   const { data } = useSWR('/api/readfiles', fetcher);
-  const { data } = useSWR('/api/readmeta/readmeta', fetcher);
+    console.log("📢 ListofFiles is running on the Updates Page!");
 
+    const fetcher = (url) => fetch(url).then((res) => res.json());
+    const { data } = useSWR('/api/readmeta/readmeta', fetcher);
 
-  return (<>
-    <div>
-        {!data && "Loading..."}
-        {data && data.map(fileName => <Link href={getlink(fileName)}><Card metastring={fileName} /></Link>)
-        }
-    </div>
-    </>
-  )
+    if (!data) {
+        console.log("⏳ Fetching data...");
+        return <div>Loading...</div>;
+    }
+
+    console.log("✅ Fetched Data:", data);
+
+    const sortedFiles = [...data].sort((a, b) => extractDate(b) - extractDate(a));
+
+    return (
+        <div>
+            {sortedFiles.map((fileName, index) => (
+                <Link key={index} href={getlink(fileName)}>
+                    <Card metastring={fileName} />
+                </Link>
+            ))}
+        </div>
+    );
 }
 
 # New and Updates
