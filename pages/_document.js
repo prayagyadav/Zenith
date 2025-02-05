@@ -1,20 +1,22 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Analytics } from "@vercel/analytics/react";
+import { Html, Head, Main, NextScript } from "next/document";
 
-export default function Document () {
+export default function Document() {
   return (
     <Html>
       <Head>
         <link
-          rel='stylesheet'
-          href='https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css'
-          integrity='sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB'
-          crossOrigin='anonymous'
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+          integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB"
+          crossOrigin="anonymous"
         />
       </Head>
       <body>
+        <Analytics />
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }
