@@ -13,9 +13,9 @@ export default function Document() {
         />
       </Head>
       <body>
-        <Analytics />
         <Main />
         <NextScript />
+        <Analytics />
       </body>
     </Html>
   );
