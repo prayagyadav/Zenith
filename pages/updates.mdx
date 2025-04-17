@@ -12,7 +12,7 @@ export function Card(props) {
 
     return (
         <div className="rounded m-2 p-2 h-auto">
-            <p className="group text-2xl relative w-max">
+            <p className="group text-2xl relative">
                 <span>
                     <div className="no-underline">{title}</div>
                 </span>
@@ -34,7 +34,7 @@ export function extractDate(metastring) {
     return dateStr ? new Date(dateStr) : new Date(0); // Use epoch if date is missing
 }
 
-export function ListofFiles() {
+export function ListofFiles({ wrap = false }) {
     console.log("📢 ListofFiles is running on the Updates Page!");
 
     const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -48,14 +48,27 @@ export function ListofFiles() {
     console.log("✅ Fetched Data:", data);
 
     const sortedFiles = [...data].sort((a, b) => extractDate(b) - extractDate(a));
+    const displayedFiles = wrap ? sortedFiles.slice(0, 4) : sortedFiles;
 
     return (
         <div>
-            {sortedFiles.map((fileName, index) => (
+            {displayedFiles.map((fileName, index) => (
                 <Link key={index} href={getlink(fileName)}>
                     <Card metastring={fileName} />
                 </Link>
             ))}
+            {wrap && (
+                      <div className="w-30" >
+                          <Link href="updates" className="inline-block">
+                          <button className="flex text-blue-500 p-1 w-30 transition-all duration-500 ease-in-out hover:translate-x-3 bg-gradient-to-l from-blue-500 to-[#181414] bg-[length:1000%_1000%] hover:bg-[length:100%_100%] rounded-sm">
+                            <p class="px-1">View More</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                          </Link>
+                      </div>
+                        )}
         </div>
     );
 }
