@@ -8,10 +8,20 @@ export function Card(props) {
   const [showDescription, setShowDescription] = useState(false);
   const emailPrefix = "mailto:";
 
+  // Determine if a single link exists
+  const hasSingleLink = props.pagelink && props.pagetext;
+
+  // If pagelinks is defined and an array, use it; otherwise, fall back to single link if it exists
+  const linkList = Array.isArray(props.pagelinks)
+    ? props.pagelinks
+    : hasSingleLink
+      ? [{ url: props.pagelink, text: props.pagetext }]
+      : [];
+
   return (
     <div className="transition-all duration-300 mb-4 w-full md:w-1/3 grow-0 bg-blue-500/15 hover:shadow-blue-500 hover:bg-blue-500/20 hover:shadow-md m-2 rounded-lg">
       <div className="p-4">
-        {/* Image with fixed size */}
+        {/* Image */}
         <div className="w-full h-48 relative">
           <Image
             src={props.imgpath}
@@ -29,15 +39,27 @@ export function Card(props) {
           <p className="text-blue-700 hover:text-blue-400">Email</p>
         </Link>
 
-        {/* Page Link */}
-        <a href={props.pagelink} className="text-blue-700 hover:text-blue-400">
-          {props.pagetext}
-        </a>
+        {/* Links */}
+        {linkList.length > 0 && (
+          <div className="mt-1 space-y-1">
+            {linkList.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-blue-700 hover:text-blue-400"
+              >
+                {link.text}
+              </a>
+            ))}
+          </div>
+        )}
 
         {/* Address */}
-        <p className="text-sm italic">{props.address}</p>
+        <p className="text-sm italic mt-1">{props.address}</p>
 
-        {/* Dropdown for Description */}
+        {/* Description toggle */}
         <button
           onClick={() => setShowDescription(!showDescription)}
           className="mt-2 text-sm text-blue-700 hover:text-blue-400"
@@ -64,13 +86,15 @@ description="Faculty coordinator"
 ## Convenor
 
 <Card
-name="Dilip Kumar"
-imgpath="/img/profiles/DilipPhoto.jpg"
-email="21phph03@uohyd.ac.in"
-address="Research Scholar, School of Physics, UoH"
-pagelink="https://scholar.google.com/citations?user=G5mWQbIAAAAJ&hl=en&oi=ao"
-pagetext="Google Scholar"
-description="Passionate about unraveling the mysteries of the cosmos, I explore the universe through theoretical research and club activities, inspiring others to look up and wonder!"
+  name="Dilip Kumar"
+  imgpath="/img/profiles/DilipPhoto.jpg"
+  email="21phph03@uohyd.ac.in"
+  address="Research Scholar, School of Physics, UoH"
+  pagelinks={[
+    { url: "https://scholar.google.com/...", text: "Google Scholar" },
+    { url: "https://linkedin.com/...", text: "LinkedIn" }
+  ]}
+  description="..."
 />
 
 ## Members
