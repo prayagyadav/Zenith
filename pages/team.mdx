@@ -19,64 +19,69 @@ export function Card(props) {
       : [];
 
   return (
-    <div className="transition-all duration-300 mb-4 w-full md:w-1/3 grow-0 bg-blue-500/15 hover:shadow-blue-500 hover:bg-blue-500/20 hover:shadow-md m-2 rounded-lg">
-      <div className="p-4">
-        {/* Image */}
-        <div className="w-full h-48 relative">
-          <Image
-            src={props.imgpath}
-            alt={props.name}
-            fill
-            className="rounded-t-lg object-cover"
-          />
-        </div>
-
-        {/* Name */}
-        <p className="mt-2 font-bold">{props.name}</p>
-
-        {/* Email */}
-        <Link href={emailPrefix + props.email}>
-          <p className="text-blue-700 hover:text-blue-400">Email</p>
-        </Link>
-
-        {/* Links */}
-        {linkList.length > 0 && (
-          <div className="mt-1 space-y-1">
-            {linkList.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-blue-700 hover:text-blue-400"
-              >
-                {link.text}
-              </a>
-            ))}
-          </div>
-        )}
-
-        {/* Address */}
-        <p className="text-sm italic mt-1">{props.address}</p>
-
-        {/* Description toggle */}
-        <button
-          onClick={() => setShowDescription(!showDescription)}
-          className="mt-2 text-sm text-blue-700 hover:text-blue-400"
-        >
-          {showDescription ? "Hide Description ▲" : "Show Description ▼"}
-        </button>
-
-        {showDescription && <p className="mt-2">{props.description}</p>}
+  <div className="transition-all duration-300 mb-4 w-full md:w-1/3 grow-0 bg-blue-500/15 hover:shadow-blue-500 hover:bg-blue-500/20 hover:shadow-md m-2 rounded-lg">
+    <div className="p-4">
+      {/* Image */}
+      <div className="w-full h-48 relative">
+        <Image
+          src={props.imgpath}
+          alt={props.name}
+          fill
+          className="rounded-t-lg object-cover"
+        />
       </div>
+
+      {/* Name */}
+      <p className="mt-2 text-xl font-bold">{props.name}</p>
+
+      {/* Designation - NEWLY ADDED */}
+      {props.designation && (
+        <p className="text-md text-gray-600">{props.designation}</p>
+      )}
+
+      {/* Email */}
+      <Link href={'mailto:' + props.email}>
+        <p className="mt-2 text-blue-700 hover:text-blue-400">Email</p>
+      </Link>
+
+      {/* Links */}
+      {linkList.length > 0 && (
+        <div className="mt-1 space-y-1">
+          {linkList.map((link, index) => (
+            <a
+              key={index}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-blue-700 hover:text-blue-400"
+            >
+              {link.text}
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* Address */}
+      <p className="text-sm italic mt-2">{props.address}</p>
+
+      {/* Description toggle */}
+      <button
+        onClick={() => setShowDescription(!showDescription)}
+        className="mt-2 text-sm text-blue-700 hover:text-blue-400"
+      >
+        {showDescription ? 'Hide Description ▲' : 'Show Description ▼'}
+      </button>
+
+      {showDescription && <p className="mt-2">{props.description}</p>}
     </div>
-  );
+  </div>
+);
 }
 
 ## Faculty coordinators
 
 <Card
-name="Dr. Askoka Vudyagiri"
+name="Dr. Ashoka Vudyagiri"
 imgpath="/img/profiles/AshokPhoto.jpg"
 email="ashok_vs@uohyd.ac.in"
 address="School of Physics, UoH"
@@ -85,22 +90,67 @@ description="Faculty coordinator"
 
 ## Convenor
 
+<div className='flex flex-col md:flex-row'>
+<Card
+name="Sambit Kumar Satapathy"
+designation = "Convenor (2025 - Present)"
+imgpath="/img/profiles/SambitPhoto.jpg"
+email="sambitsatapathy57@gmail.com"
+address="Research Scholar, School of Physics, University of Hyderabad"
+pagelink="https://www.linkedin.com/in/sambitsatapathy9"
+pagetext="LinkedIn"
+description="I've always been mesmerized by the night sky, and my interest in astronomy kicked off 
+during my school days. And when I joined the university, we got to organize stargazing sessions and conduct 
+talks by experts through the club, which has shaped my interest towards astronomy even more."
+/>
+
 <Card
   name="Dilip Kumar"
+  designation = "Convenor (2022-25)"
   imgpath="/img/profiles/DilipPhoto.jpg"
   email="21phph03@uohyd.ac.in"
   address="Research Scholar, School of Physics, UoH"
   pagelinks={[
-    { url: "https://scholar.google.com/citations?hl=en&user=G5mWQbIAAAAJ", text: "Google Scholar" },
-    { url: "https://linkedin.com/in/dilip-kumar-8b5408249", text: "LinkedIn" }
+   { url: "https://scholar.google.com/citations?hl=en&user=G5mWQbIAAAAJ", text: "Google Scholar" },
+   { url: "https://linkedin.com/in/dilip-kumar-8b5408249", text: "LinkedIn" }, 
+   { url: "", text:"Website"}
   ]}
   description="..."
 />
 
+</div>
+
+## Leadership 
+
+<div className='flex flex-col md:flex-row'>
+<Card
+name="Samarth Majumdar"
+designation = "President (2025 - Present)"
+imgpath="/img/profiles/SamarthPhoto2.jpeg"
+email="23ipmp21@uohyd.ac.in"
+address="IMSc Physics 3rd Year, University of Hyderabad"
+pagelink="https://in.linkedin.com/in/samarth-majumdar-39a7b12b1"
+pagetext="LinkedIn"
+description="I'm passionate about all things astronomy/astrophysics, especially black holes, neutron stars, gravitational waves, dark matter, and all the other weird and wonderful stuff in the universe!"
+/>
+
+
+<Card
+name="Yash Kumar"
+designation = "Vice President (2025 - Present)"
+imgpath="/img/profiles/YashPhoto1.jpeg"
+email="k.yashh01@gmail.com"
+address="MSc Physics 2nd Year, University of Hyderabad"
+pagelink="https://www.instagram.com/k.yashhhh?igsh=bGcybTU1bjJyNWM0"
+pagetext="Instagram"
+description="Up there in the sky there was a metaphor of immortality."
+/>
+
+</div>
+
 ## Members
 
-<div className='flex flex-col md:flex-row '>
-
+<div className='flex flex-col md:flex-row'>
 <Card
 name="Dev Raheja"
 imgpath="/img/profiles/DevPhoto.jpg"
@@ -133,18 +183,8 @@ Blackholes are world favourite and mine too. Can't observe them by some ordinary
 />
 
 </div>
+
 <div className='flex flex-col md:flex-row'>
-
-<Card
-name="Yash Kumar"
-imgpath="/img/profiles/YashPhoto1.jpeg"
-email="k.yashh01@gmail.com"
-address="MSc Physics 2nd Year, University of Hyderabad"
-pagelink="https://www.instagram.com/k.yashhhh?igsh=bGcybTU1bjJyNWM0"
-pagetext="Instagram"
-description="Up there in the sky there was a metaphor of immortality."
-/>
-
 <Card
 name="Wajahat Altaf Sayyed"
 imgpath="/img/profiles/WajahatPhoto.jpg"
@@ -155,20 +195,7 @@ pagetext="LinkedIn"
 description=""
 />
 
-<Card
-name="Sambit Kumar Satapathy"
-imgpath="/img/profiles/SambitPhoto.jpg"
-email="sambitsatapathy57@gmail.com"
-address="JRF 2025, CASEST, School of Physics, University of Hyderabad"
-pagelink="https://www.linkedin.com/in/sambitsatapathy9"
-pagetext="LinkedIn"
-description="I've always been mesmerized by the night sky, and my interest in astronomy kicked off 
-during my school days. And when I joined the university, we got to organize stargazing sessions and conduct 
-talks by experts through the club, which has shaped my interest towards astronomy even more."
-/>
 
-</div>
-<div className='flex flex-col md:flex-row'>
 
 <Card
 name="Akash Malemath"
@@ -182,20 +209,10 @@ description="As one of the first members of Zenith, my journey with astronomy be
 
 
 <Card
-name="Samarth Majumdar"
-imgpath="/img/profiles/SamarthPhoto2.jpeg"
-email="23ipmp21@uohyd.ac.in"
-address="IMSc Physics 2nd Year, University of Hyderabad"
-pagelink="https://in.linkedin.com/in/samarth-majumdar-39a7b12b1"
-pagetext="LinkedIn"
-description="I'm passionate about all things astronomy/astrophysics, especially black holes, neutron stars, gravitational waves, dark matter, and all the other weird and wonderful stuff in the universe!"
-/>
-
-<Card
 name="Harsh Vardhan"
 imgpath="/img/profiles/HarshPhoto2.jpeg"
 email="harshvardhan15@gmail.com"
-address="IMSc Physics 2nd Year, University of Hyderabad"
+address="IMSc Physics 3rd Year, University of Hyderabad"
 pagelink="https://www.linkedin.com/in/harshjvardhan/"
 pagetext="LinkedIn"
 description="I am passionate about astronomy but primarily focused on condensed matter physics, particularly superconductivity and topological insulators. Their ultimate goal is to develop a fault-tolerant quantum computer using topological qubits."
@@ -203,9 +220,9 @@ description="I am passionate about astronomy but primarily focused on condensed 
 
 
 </div>
+
+
 <div className='flex flex-col md:flex-row'>
-
-
 <Card
 name="Gaurav Prasad Gond"
 imgpath="/img/profiles/GauravPhoto.jpeg"
@@ -220,7 +237,7 @@ description="I'm passionate about astronomy and astrophysics, especially black h
 name="Rahul Verma"
 imgpath="/img/profiles/RahulPhoto1.jpg"
 email="iamrahul030504@gmail.com"
-address="IMSc Physics 2nd Year, University of Hyderabad"
+address="IMSc Physics 3rd Year, University of Hyderabad"
 pagelink="https://www.linkedin.com/in/rahul-verma-4b6706295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
 pagetext="LinkedIn"
 description="I'm interested in astronomy and astrophysics but passionate about high energy physics and want to pursue it as a career option."
@@ -228,21 +245,21 @@ description="I'm interested in astronomy and astrophysics but passionate about h
 
 <Card
 name="Aniruth Sreenivasan"
-imgpath="/img/profiles/AniruthPhoto.jpeg"
+imgpath="/img/profiles/AniruthPhoto2.jpeg"
 email="23ipmp04@uohyd.ac.in"
-address="IMSc Physics 2nd Year, University of Hyderabad"
+address="IMSc Physics 3rd Year, University of Hyderabad"
 pagelink="https://www.instagram.com/aniruth._.04?igsh=MTl5cGQ2aDYzbW8w"
 pagetext="Instagram"
-description="Enthusiastic Sky Gazer from 8th Grade"
+description="I have always been fascinated by the wonders of the night sky, from tracing constellations to watching celestial events unfold. Sky gazing gives me a sense of curiosity and calm, inspiring me to learn more about the universe and our place in it. Through the club, I hope to keep nurturing my love for astronomy while contributing to a community that celebrates the beauty of the cosmos."
 />
 
 </div>
+
+
 <div className='flex flex-col md:flex-row'>
-
-
 <Card
 name="Tushar Gilhare"
-imgpath="/img/profiles/TusharPhoto.jpg"
+imgpath="/img/profiles/TusharPhoto1.jpeg"
 email="23ipmp20@uohyd.ac.in"
 address="IMSc Physics 2nd Year, University of Hyderabad"
 description="I've always been fascinated by astronomy because I've had so many questions about stars how they form, how they work, and what impact they have on us here on Earth. Stars are the fundamental building blocks of the universe, and their life cycles shape everything around us.
@@ -254,7 +271,7 @@ Every atom of carbon, oxygen, and iron in us was once forged in the heart of a d
 name="Mayank Soni"
 imgpath="/img/profiles/MayankPhoto.jpg"
 email="mayanksoni60602@gmail.com"
-address="IMSc Physics 2nd Year, University of Hyderabad"
+address="IMSc Physics 3rd Year, University of Hyderabad"
 description="I’m fascinated by the night sky and the poetry about it. Words don’t always do it justice, but that’s why I love astronomy—it fills in the gaps. Beyond that, I’m into physics and philosophy, trying to wrap my head around the answers we’ve come up with for everything from the ridiculously big to the unbelievably small. Basically, I just want to get what’s really going on.
 "
 />
@@ -271,6 +288,27 @@ description="Astronomy is the observation to uncover the mysteries of the cosmos
 </div>
 
 
+<div className='flex flex-col md:flex-row'>
+
+
+<Card
+name="Nandana Santheep"
+imgpath="/img/profiles/NandanaPhoto.jpeg"
+email="nandanasantheep20@gmail.com"
+address="IMSc Physics 3rd Year, University of Hyderabad"
+description="I'm still exploring where my interests in physics truly lie. My fascination with space and the vastness of our universe makes being part of the club , feel a little closer to finding out."
+/>
+
+<Card
+name="Fathima Manal P"
+imgpath="/img/profiles/ManalPhoto.jpg"
+email="fathimamanalp2005@gmail.com"
+address="IMSc Physics 3rd Year, University of Hyderabad"
+pagelink="https://www.linkedin.com/in/fathima-manal-1210a229a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+pagetext="LinkedIn"
+description="Motivated physics student looking for internships or projects in astrophysics (dark matter, black holes, and galaxy dynamics) to obtain practical research experience; has experience with observational workshops, community outreach, and Python."
+/>
+
 <Card
 name="Sayandip Dolui"
 imgpath="/img/profiles/SayandipPhoto.jpg"
@@ -279,4 +317,78 @@ address="IMSc Physics 2nd Year, University of Hyderabad"
 pagelink="https://www.linkedin.com/in/sayandip-dolui-b64a0123a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
 pagetext="LinkedIn"
 description="I am interested in Observational Astronomy, especially Astrophotography and Solar Photography. My current research focuses on utilizing Josephson Junctions(JJs) in the development of Superconducting Qubits. Primarily, I enjoy interdisciplinary research, where physics intersects with materials science and engineering, nanotechnology, exploring novel quantum effects and advancing experimental techniques."
+/>
+
+</div>
+
+
+<div className='flex flex-col md:flex-row'>
+<Card
+name="Kajal"
+imgpath="/img/profiles/KajalPhoto.jpg"
+email="25phmp08@uohyd.ac.in"
+address="MSc Physics 1st Year, University of Hyderabad"
+pagelink="https://www.linkedin.com/in/kajal-33ba47313"
+pagetext="LinkedIn"
+description="Learning Astronomy!!"
+/>
+
+<Card
+name="Sai Tushar G"
+imgpath="/img/profiles/SaitusharPhoto.jpg"
+email="25phmp34@uohyd.ac.in"
+address="MSc Physics 1st Year, University of Hyderabad"
+pagelink="https://www.linkedin.com/in/saitushargopalakrishna?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+pagetext="LinkedIn"
+description=""
+/>
+
+<Card
+name="Aman Arya"
+imgpath="/img/profiles/AmanPhoto.jpg"
+email="amaniarya7513@gmail.com"
+address="MSc Physics 1st Year, University of Hyderabad"
+description="Curiosity drives me to dive into the universe to know about why's ,what's and how's of the universe."
+/>
+
+</div>
+
+
+<div className='flex flex-col md:flex-row'>
+<Card
+name="Sreemeera N"
+imgpath="/img/profiles/SreemeeraPhoto.jpg"
+email="24ipmp07@uohyd.ac.in"
+address="IMSc Physics 2nd Year, University of Hyderabad"
+description="I have been deeply fascinated by astronomy since my school days. Observing night sky always inspires me to explore more. Astronomy motivates me to think beyond limits and understand the universe at both scientific and philosophical levels."
+/>
+
+<Card
+name="Rapaka Siddhardha"
+imgpath="/img/profiles/SiddhardhaPhoto.jpg"
+email="rapakasiddardha@gmail.com"
+address="IMSc Physics 2nd Year, University of Hyderabad"
+pagelink="https://www.linkedin.com/in/siddardha-rapaka-b9b2102a4/?originalSubdomain=in"
+pagetext="LinkedIn"
+description="Curious about the universe, I love exploring stars, galaxies, and the endless mysteries of space."
+/>
+
+<Card
+name="Srivatsan Laxminarayanan"
+imgpath="/img/profiles/SrivatsanPhoto.jpg"
+email="srivatsansln@gmail.com"
+address="IMSc Physics 2nd Year, University of Hyderabad"
+pagelink="https://www.linkedin.com/in/srivatsan-lakshminarayanan-73958a346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+pagetext="LinkedIn"
+description="Nothing stirs the curiosity of humans more than what they can't understand or attain, the vastness and the grandiose of outer space gives me that human feel"
+/>
+
+</div>
+
+<Card
+name="Sowmya"
+imgpath="/img/profiles/SowmyaPhoto.jpg"
+email="24ieag06@uohyd.ac.in"
+address="IMSc Applied Geology 2nd Year, University of Hyderabad"
+description=""
 />
